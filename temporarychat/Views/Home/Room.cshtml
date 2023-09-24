@@ -1,0 +1,27 @@
+﻿
+@model temporarychat.Models.Requests.RoomRequest
+
+  <section class="msger">
+    <header class="msger-header">
+      <div  id="titleholder" class="msger-header-title">
+        UserName is:  <span  id="userName">@Model.UserName</span> /
+        RoomName is:  <span  id="roomName">@Model.RoomName</span>
+         
+      </div>
+      <div class="msger-header-options">
+        <span><i class="fas fa-cog"></i></span>
+      </div>
+
+      
+    </header>
+    
+      <div class="msger-chat" id="message-container"></div>
+      <form  class="msger-inputarea" id="send-container"> 
+      <input class="msger-input" type="text" id="message-input" placeholder="Enter your message...">
+      <button class="msger-send-btn" type="submit" id="send-button">Send</button>
+      </form>
+    
+  </section>
+  <script src="~/js/signalr/dist/browser/signalr.js"></script>
+  <script src="~/js/chat.js" asp-append-version="true"></script>
+  

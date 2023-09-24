@@ -1,7 +1,10 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using temporarychat.Hubs;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -20,9 +23,14 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(name: "default",
+               pattern: "/",
+               defaults: new { controller = "Home", action = "Index" });
 
+app.MapControllerRoute(name: "room",
+    pattern: "/{roomName}",
+    defaults: new { controller = "Home", action = "Room" });
+
+
+app.MapHub<ChatHub>("/chatHub");
 app.Run();
-

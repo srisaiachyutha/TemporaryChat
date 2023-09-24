@@ -1,4 +1,4 @@
-﻿namespace webappsample.Models;
+﻿namespace temporarychat.Models;
 
 public class ErrorViewModel
 {
